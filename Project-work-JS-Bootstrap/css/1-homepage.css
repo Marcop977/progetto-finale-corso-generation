@@ -1,0 +1,103 @@
+/* h1,h2,h3,h4,h5,h6 {
+    font-family: 'Michroma', sans-serif;
+} */
+
+/* body {
+    font-family: 'Lato', sans-serif;
+} */
+
+.swiper-button-prev, .swiper-button-next{
+
+    color: white;
+    
+}
+
+/* body{
+    background-color: rgb(173, 179, 189);
+} */
+
+.sovrapposizione{
+    margin-top: -3rem;
+    position: relative;
+    z-index: 3;
+}
+
+/* #formModifica{
+    scroll-margin-top: 1rem;
+} */
+
+.overlay::before{
+    content:'';
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(41, 30, 88, 0) 0%, rgba(40, 40, 65, 0.5) 0%);
+    cursor: pointer;
+}
+
+.overlay2::before{
+    content:'';
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(41, 30, 88, 0) 0%, rgba(40, 40, 65, 0.5) 0%);
+}
+
+.banner-scuro::before{
+    content:'';
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(41, 30, 88, 0) 0%, rgba(40, 40, 65, 0.5) 0%);
+    cursor: pointer;
+}
+
+.parallax-container {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+.parallax-content {
+    position: relative;
+    z-index: 1;
+}
+
+.placeholder-bianchi input::placeholder {
+    color: #ffffff;
+}
+
+.box-shadow-blu:focus{
+    box-shadow: 0 0 0 0!important;
+}
+
+.container-no-click{
+    pointer-events: none;
+}
+
+/* .container-no-click::before{
+    content:'';
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(41, 30, 88, 0) 0%, rgba(40, 40, 65, 0.5) 0%);
+} */
+.colore-icona{
+    color: rgb(253, 218, 63);
+}
