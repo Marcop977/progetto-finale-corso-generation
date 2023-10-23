@@ -3,7 +3,6 @@ package it.marco.entities;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -18,19 +17,19 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "prenotazioni")
 public class Prenotazione {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_prenotazione;
-	
+
 	@UpdateTimestamp
 	private Timestamp dataPrenotazione;
 	private int postiPrenotati;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "evento_id")
 	private Evento evento_id;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "utente_id")
 	private Utente utente_id;
@@ -73,7 +72,6 @@ public class Prenotazione {
 
 	public void setUtente_id(Utente utente_id) {
 		this.utente_id = utente_id;
-	}	
-		
+	}
 
 }
