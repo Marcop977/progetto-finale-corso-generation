@@ -1,0 +1,107 @@
+Progetto – ORGANIZZAZIONE EVENTI CULTURALI
+
+Progettare un’applicazione web utilizzando le tecnologie trattate a lezione (Spring, Javascript, Bootstrap, MySql) che permetta la collaborazione di diversi utenti nel creare, aggiornare e gestire una piattaforma di ORGANIZZAZIONE EVENTI. I dati relativi agli utenti sono conservati in una base di dati di nome “registrazione”, contenente una tabella di nome “ArchivioUtenti”. Ciascun utente sarà rappresentato attraverso un record della suddetta tabella. Il file registrazione.sql allegato in appendice contiene le istruzioni SQL per la definizione della base di dati descritta.
+
+Esistono 3 tipologie di utenti, identificabili attraverso il campo “Tipo” della tabella ArchivioUtenti:
+
+1 Amministratore (Tipo=”A”). Questi utenti possono caricare nuovi EVENTI (Concerto, Proiezione Film, Rassegna Letteraria, TedX) specificando le caratteristiche (prenotazione obbligatoria, ingresso libero, ingresso a pagamento) e le disponibilità.
+2 Utente Registrato (Tipo=”B”). Possibilità di registrarsi al portale per prenotare un evento disponibile in città scegliendo da una lista divisa in categorie. Possibilità di acquistare un abbonamento . Possibilità di modificare una prenotazione (cambio data, cambio tipologia).
+3 Utente pubblico (Tipo= “C”), non registrato (non presente nella tabella ArchivioUtenti). Questo utente può solo vedere gli eventi disponibili : lista totale di tutti gli eventi e funzione filtro per tipologia.
+
+Non è richiesto implementare procedure di inserimento di nuovi utenti nell’archivio, ma soltanto le necessarie procedure di autenticazione attraverso un form di login
+
+Eventi disponibili
+Un evento è costituito da una serie di informazioni:
+1 EventoID
+2 Tipologia (Concerto, film, ecc..)
+3 Caratteristiche
+4 Descrizione
+5 Luogo Evento
+6 Disponibilità
+7 Data dell’evento
+8 Locandina
+9 UserID dell’utente che ha inserito l’informazione
+
+Ad esempio
+1 Evento 1
+2 Concerto
+3 Prenotazione Obbligatoria
+4 Rassegna Hard Rock, il meglio degli anni ‘70
+5 via Carlo Alberto 22
+6 true
+7 23/07/2023
+8 hardRock.jpg
+9 UtenteAmministratore1
+
+Pagina Home
+Tale pagina conterrà:
+
+1. un banner scorrevole (inclusione del file: banner.jsp)
+2. il calendario delle disponibilità (inclusione del file: calendario.jsp) 3. un link al pannello di lavoro (link alla pagina: pannello.jsp)
+3. un link per il logout o per il login a seconda che l’utente abbia già superato o meno le procedure di autenticazione
+4. una mappa dei vari eventi disponibili sul territorio
+5. Pulsante evento online (Appendice B)
+
+Banner scorrevole (banner.jsp)
+Si tratta di un campo di testo + immagine scorrevole, aggiornato dinamicamente, in funzione del contenuto dell’archivio degli eventi disponibili. In tale elenco, ciascun evento dovrà essere rappresentato dalla sequenza: **_Descrizione – Posizione – link alla pagina evento.jsp con passaggio dell’ID evento come parametro di una richiesta http di tipo GET _** .
+
+Disponibilità eventi (calendario.jsp)
+Dovrà essere costituito da una tabella contenente due colonne aggiornate dinamicamente in funzione della data e dell’ora. La colonna di sinistra conterrà gli eventi non ancora avvenuti. La colonna di destra conterrà l’elenco degli eventi trascorsi.
+Ciascun evento dovrà essere rappresentato attraverso gli elementi: Tipologia – Descrizione – Posizione – link alla pagina evento.jsp con passaggio dell’ID dell’evento come parametro di una richiesta http di tipo GET.
+
+Pagina del singolo evento (evento.jsp)
+Tale pagina viene prodotta dinamicamente in funzione dell’ID dell’evento ricevuto come parametro di una richiesta di GET. Qualora la pagina venisse richiesta senza nessun parametro, l’utente deve essere rediretto verso la pagina home. Tale pagina dovrà contenere tutte le informazioni disponibili riguardanti l’evento, opportunamente impaginate, e una mappa con il marker sulla posizione. Nel caso in cui si tratti di un evento a prenotazione obbligatoria dovrà essere presente un pulsante che permetta di eseguire la prenotazione tramite nome e email.
+
+Pannello di lavoro (pannello.jsp)
+Tale pagina dovrà essere protetta da un opportuno tag personalizzato e mostrare i seguenti contenuti:
+
+1 Se l’utente non ha già effettuato le operazioni di login, deve essere visualizzato un form di login in cui inserire UserID e password, per poi essere rediretti, una volta autenticati, alla stessa pagina protetta dalla quale è scaturita la richiesta di login.
+2 Se l’utente è di tipo base “B” deve essere rediretto ad una pagina di errore (errore.jsp) contenente un messaggio che specifichi che l’utente non dispone di diritti sufficienti alla modifica degli eventi e un link per il logout.
+3 Se l’utente è di tipo admin (“A”) deve essere visualizzato un pannello di amministrazione contenente i link alle seguenti 3 funzionalità:
+3.a Inserimento di un nuovo evento (INS) – link a inserisci.jsp
+3.b Elenco eventi amministrabili (VIEW) – link a view.jsp
+3.c Logout
+
+Pagina di inserimento di un evento (inserisci.jsp)
+Protetta da un tag personalizzato per l’autenticazione. Deve prevedere un form per l’inserimento di un evento nell’archivio e un bottone di logout attraverso il quale tornare alla pagina home. Tale form dovrà contenere i seguenti campi: Tipologia Evento, Caratteristiche, Descrizione, Disponibilità in termini di posti se prevista dalle caratteristiche, Upload di un immagine, URL di una pagina web esterna all’applicazione (google Maps). Dovranno essere obbligatori solo i campi principali, inclusa la locandina.
+Attraverso questa pagina l’utente deve poter inserire le informazioni relative ad un nuovo evento,pertanto dovrà essere visibile nella home e attraverso la pagina del singolo evento (previo passaggio dell’opportuno ID).
+
+Elenco degli eventi e prenotazioni amministrabili (view.jsp)
+Protetta da un tag personalizzato per l’autenticazione. Deve prevedere un bottone di logout attraverso il quale tornare alla pagina home. Deve permettere la visualizzazione di una tabella con una riga per ciascun evento amministrabile e un corrispondente radio button.
+Gli utenti di tipo "C" verranno rediretti ad una pagina di errore, che specificherà che gli utenti non dispongono dei diritti necessari, con un eventuale bottone di logout per gli utenti di tipo “B”.
+Se sono presenti più di 10 eventi la scansione della tabella deve essere ripartita su più pagine generate dinamicamente (eventi da 1 a 10, da 11 a 20 ecc.). In cima e in fondo alla tabella devono essere presenti due pulsanti “modifica” e “cancella”, attraverso i quali sarà possibile attivare le procedure di modifica e cancellazione dell’evento.
+
+1 La procedura di modifica, prevede la visualizzazione di un form, precompilato con i dati relativi all’evento selezionato, ma editabile in tutte le sue componenti tranne il eventoID, un pulsante di reset (che ripristinerà i dati ultimi memorizzati) e uno di submit per i nuovi dati.
+2 La procedura di cancellazione prevede l’eliminazione del record relativo all’evento dall’archivio di quelli disponibili e conseguentemente da tutte le componenti dinamiche che ne permettevano la visualizzazione.
+
+Logout
+Deve prevedere la cancellazione di tutte le informazioni che permettono il riconoscimento dell’utente dell’applicativo e il ritorno alla pagina home
+Appendice
+Si dispone di una base di dati creata attraverso questo file di definizione: --- registrazione.sql ---
+
+CREATE DATABASE registrazione; grant all privileges on registrazione.\* to 'admin'@'localhost' identified by 'admin'; flush privileges;
+USE registrazione;
+CREATE TABLE ArchivioUtenti (
+UltimaModifica TIMESTAMP ,
+UserID VARCHAR(16) NOT NULL,
+Password VARCHAR(50) NOT NULL,
+Firma TEXT,
+Tipo VARCHAR(1) NOT NULL,
+Nome VARCHAR(40),
+Cognome VARCHAR(40),
+Nascita VARCHAR(10),
+Email VARCHAR(40) NOT NULL,
+DataIscrizione TIMESTAMP,
+CONSTRAINT UserID PRIMARY KEY (UserID),
+UNIQUE KEY IDX_Utente_1 (UserID)
+);
+INSERT INTO ArchivioUtenti (UserID, Password, Firma, Tipo, Nome, Cognome, Nascita, Email, DataIscrizione)
+VALUES ('Amministratore', 'Amministratore', 'Amministratore dei servizi', 'A'', 'Paolino','Paperino','20/08/1900',
+'paolino.paperino@paperopoli.com', 20060101000000);
+INSERT INTO ArchivioUtenti (UserID, Password, Firma, Tipo, Nome, Cognome, Nascita, Email,
+DataIscrizione) VALUES ('UtenteRegistrato1', 'UtenteRegistrato1', 'Utente con diritti minimi', 'B',
+
+Appendice B
+Partecipazione in remoto agli eventi
+Si dovrà fornire la possibilità, solo per alcuni eventi, di partecipare in modalità remota. All’acquisto dell’evento in questione è possibile scegliere la modalità di partecipazione. Da quel momento in poi l’utente che ha scelto l’evento vedrà nella Home un nuovo pulsante “Partecipa all’evento” (si può scegliere di attivare il pulsante solo allo scadere dell’inizio dell’evento o mostrarlo sempre). Al click su questo pulsante si verrà reindirizzati in una pagina in cui sarà presente un player per assistere all’evento.
+La pagina per la partecipazione remota dovrà avere la struttura adeguata: player a sinistra; a destra sezione commenti ed interazioni. La sezione sul lato destro della pagina dovrà contenere una chat funzionante.
