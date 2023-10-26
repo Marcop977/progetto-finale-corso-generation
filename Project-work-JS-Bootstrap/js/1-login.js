@@ -42,9 +42,7 @@ login.onclick = function(){
             setTimeout(() => {
                 document.querySelector("#utenteNonTrovato").style.display = "none";
             }, 6000);
-        }
-
-        
+        }    
     })        
 
 }

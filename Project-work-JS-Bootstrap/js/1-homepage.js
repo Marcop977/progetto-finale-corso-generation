@@ -9,11 +9,7 @@ const navLogin = document.querySelector("#dropdownId");
 const navLogout = document.querySelector("#profiloLogout");
 const registrati = document.querySelector("#registrati");
 const eventiNonTrovati = document.querySelector("#eventiNonTrovati");
-// const selectGenere = document.querySelector("#selectGenere");
-// document.querySelector("#linkEventi").addEventListener("click", function(){
-//     location.href = "1-homepage.html#titoloLista"
-// })
-// logout dell'admin dalla pagina 2-admin
+
 document.addEventListener("DOMContentLoaded", function() {
     const logoutAdmin = sessionStorage.getItem("logoutAdmin");
 
@@ -38,7 +34,6 @@ occhioPassword.addEventListener("click", function(event) {
 
 
 //------- login
-
 if(sessionStorage.getItem("user") == null){
     registrati.style.display = "block";
     navLogin.style.display = "block";
@@ -49,8 +44,6 @@ if(sessionStorage.getItem("user") == null){
         .then(data =>{return data.json()})
         .then(res =>{
             const emailCampo = document.querySelector("#email");
-            // const passwordCampo = document.querySelector("#password");
-
             const esiste = res.find(u => u.email === emailCampo.value && u.password === passwordCampo.value);
 
             if(esiste){
@@ -74,7 +67,6 @@ if(sessionStorage.getItem("user") == null){
 }else{
     mostraNascondi()          
 }
-
 
 function mostraNascondi(){
     const utenteEsistente = JSON.parse(sessionStorage.getItem("user"));
@@ -122,7 +114,6 @@ function mostraNascondi(){
 
 
 // ---------- eventi
-
 fetch("http://localhost:9012/api/eventi")
 .then(data => { return data.json() })
 .then(res => {
@@ -175,43 +166,23 @@ fetch("http://localhost:9012/api/eventi")
                 nonDisponibili.appendChild(colEvento);
             }
         }
-
-
     });    
     
-
     const eventiTitoli = ["Concerto: Beethoven", "Fotografia del XX Secolo", "Notte di Blues: Jam Session"];
     for(let i = 0; i < eventiTitoli.length; i++){
         const titoloBanner = document.querySelector(`#titoloBanner${i + 1}`);
-        // titoloBanner.setAttribute("style", "cursor: pointer; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);");
         const paragrafoBanner = document.querySelector(`#paragrafoBanner${i + 1}`);
-        // paragrafoBanner.setAttribute("style", "cursor: pointer;");
-        // const btnBanner = document.querySelector(`#btnBanner${i + 1}`);  //bottone banner
         const eventoSpecifico = res.find(evento => evento.titolo === eventiTitoli[i]);
 
         if(eventoSpecifico){
             titoloBanner.textContent = eventoSpecifico.titolo;
             paragrafoBanner.textContent = eventoSpecifico.descrizioneLunga;
-            // btnBanner.onclick = function(){
-            //     sessionStorage.setItem("evento", JSON.stringify(eventoSpecifico));
-            //     location.href = "3-evento.html";
-            // }
-
 
             const banner = document.querySelector(`#banner${i + 1}`);
-            // banner.addEventListener("mouseover", function(){
-            //     banner.classList.add("overlay");
-            // })
-            // banner.addEventListener("mouseout", function(){
-            //     banner.classList.remove("overlay");
-            // })
             banner.addEventListener("click", function(){
                 sessionStorage.setItem("evento", JSON.stringify(eventoSpecifico));
                 location.href = "3-evento.html";
-            })
-
-            
-        
+            })  
         }
     }    
 })
@@ -219,11 +190,9 @@ fetch("http://localhost:9012/api/eventi")
 
 
 // ---------- mappa
-
 const map = L.map("map").setView([40.8522, 14.2681], 7);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',}).addTo(map);
 const provider = new GeoSearch.OpenStreetMapProvider();
-
 
 fetch("http://localhost:9012/api/eventi")
 .then(data => { return data.json() })
@@ -242,7 +211,7 @@ fetch("http://localhost:9012/api/eventi")
             });
             const marker = L.marker([location.y, location.x], { icon: iconaMarker }).addTo(map);
             marker.bindPopup(address);
-            markers.push(marker); // Aggiungi il marker all'array
+            markers.push(marker);
 
             marker.addEventListener('click', function() {
                 const eventoCorrispondente = res.find(evento => evento.luogoEvento === address);
@@ -269,7 +238,6 @@ const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
     autoplay: {
         delay: 3000,
-        // disableOnInteraction: false,
     },
     loop: true,
     effect: "fade",
@@ -308,9 +276,6 @@ document.querySelector(".swiper").addEventListener("mouseout", function(){
 })
 
 // ------------ filtro
-
-
-
 document.querySelector("#eliminaFiltro").addEventListener("click", function(){
     document.querySelectorAll("#colEvento").forEach(colEvento => {
         colEvento.style.display = "block";
@@ -324,9 +289,7 @@ document.querySelector("#eliminaFiltro").addEventListener("click", function(){
     document.querySelector("#iconaTriste").style.display = "none";
     document.querySelector("#selectTipoEvento").value = 0;
     document.querySelector("#selectData").value = 0;
-    document.querySelector("#selectLocalita").value = 0;
-    
-    
+    document.querySelector("#selectLocalita").value = 0;  
 })
 
 document.querySelector("#eliminaFiltro").addEventListener("click", function(){
@@ -338,48 +301,25 @@ document.querySelector("#eliminaFiltro").addEventListener("click", function(){
     document.querySelector("#colSiStringe2").setAttribute("class", "col-lg-3 border-start border-end");
     document.querySelector("#colSiStringe3").setAttribute("class", "col-lg-3");
     document.querySelector("#colSiStringe4").setAttribute("class", "col-lg-3");
-
-    // scegliere se usarli a eliminaFiltro o al tasto cerca
-    // document.querySelector("#selectTipoEvento").value = "0";
-    // document.querySelector("#selectData").value = "";
-    // document.querySelector("#selectLocalita").value = "0";
-
-    // ricerca 2
-    // document.querySelector("#colCambia").setAttribute("class", "col-lg-2");
-    // document.querySelector("#colCambia2").setAttribute("class", "col-lg-2");
     document.querySelector("#testoCerca").textContent = "Cerca";
     document.querySelector("#iconaCerca").classList.remove("fs-3");
-    document.querySelector("#tastoCerca").setAttribute("class", "btn btn-warning w-100 mt-2 rounded-4 py-4");
-    
+    document.querySelector("#tastoCerca").setAttribute("class", "btn btn-warning w-100 mt-2 rounded-4 py-4");   
 })
-
 
 document.querySelector("#tastoCerca").addEventListener("click", function(){
 
-    // ricerca 2
-    // document.querySelector("#colCambia").setAttribute("class", "col-lg-1");
-    // document.querySelector("#colCambia2").setAttribute("class", "col-lg-1");
-    
-
     if(document.querySelector("#selectTipoEvento").value !== "0" || document.querySelector("#selectData").value !== "" || document.querySelector("#selectLocalita").value !== "0"){
-
         document.querySelector("#colCompare3").style.display = "block";
-        // document.querySelector("#colSiStringe").setAttribute("class", "col-lg-2");
-        // document.querySelector("#colSiStringe2").setAttribute("class", "col-lg-2");
-        // document.querySelector("#colSiStringe3").setAttribute("class", "col-lg-2");
         this.setAttribute("class", "btn btn-warning w-100 mt-2 rounded-4 py-3");
-        // this.setAttribute("style", "padding-top: 1rem; padding-bottom: 1rem;")
         document.querySelector("#testoCerca").textContent = "";
         document.querySelector("#iconaCerca").classList.add("fs-3");
         document.querySelector("#colSiStringe4").setAttribute("class", "col-lg-1");
     }
 
-    
     const containerEventiDisponibili = document.querySelector("#eventiDisponibili").parentElement;
     const containerEventiPassati = document.querySelector("#eventiPassati").parentElement;
 
     const mesi = ["GEN", "FEB", "MAR", "APR", "MAG", "GIU", "LUG", "AGO", "SET", "OTT", "NOV", "DIC"];
-
 
     const oggi = new Date();
     let ciSonoEventiDisponibili = false;
@@ -397,18 +337,16 @@ document.querySelector("#tastoCerca").addEventListener("click", function(){
             document.querySelector("#eliminaFiltro").style.display = "block";
         }
 
-
-        const data = colEvento.querySelector("#dataEvento").textContent; // ora essendo la data GEN 01 devo cambiare approccio per confrontarla con date
+        const data = colEvento.querySelector("#dataEvento").textContent;
  
         const dataSplit = data.split(' '); 
         const mese = dataSplit[0]; 
         const giorno = parseInt(dataSplit[1], 10); 
 
-        
         const dataEvento = new Date(2023, mesi.indexOf(mese), giorno);
         
         const anno = dataEvento.getFullYear();
-        const mese1 = String(dataEvento.getMonth() + 1).padStart(2, '0'); // Mese è 0-based
+        const mese1 = String(dataEvento.getMonth() + 1).padStart(2, '0');
         const giorno1 = String(dataEvento.getDate()).padStart(2, '0');
 
         const dataSelezionata = `${anno}-${mese1}-${giorno1}`;
@@ -418,7 +356,6 @@ document.querySelector("#tastoCerca").addEventListener("click", function(){
             (localitaEvento.textContent.split(', ')[1] === localitaEventoInput.value || localitaEventoInput.value === "0") &&
             (dataSelezionata === dataEventoInput.value || dataEventoInput.value === "")
         ){
-            // document.querySelector("#iconaTriste").style.display = "none";
             colEvento.style.display = "block";
             if (dataEvento > oggi) {
                 ciSonoEventiDisponibili = true;
@@ -430,8 +367,6 @@ document.querySelector("#tastoCerca").addEventListener("click", function(){
         }
 
     });
-    
-   
 
     if(ciSonoEventiDisponibili){
         containerEventiDisponibili.style.display = "block";

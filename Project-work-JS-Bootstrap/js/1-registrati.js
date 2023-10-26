@@ -16,7 +16,6 @@ function mostraNascondi(){
     }
 }
 
-
 document.getElementById("registrati").onclick = function(event) {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     const regexEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
@@ -94,8 +93,7 @@ document.getElementById("registrati").onclick = function(event) {
         return;
     }else{
         ripetiPasswordFeedback.style.display = 'none';
-    }
-  
+    }  
     
     const utente = {
         nome: nome.value,
@@ -116,17 +114,9 @@ document.getElementById("registrati").onclick = function(event) {
         },
         body: JSON.stringify(utente)
     })
-    .then(data => {
-        
-        return data.json()})
-    .then(res =>{
-        
+    .then(data => {return data.json()})
+    .then(res =>{     
         location.href = "1-login.html";
-
-
-        // setTimeout(() => { 
-        //     window.location.href = "1-homepage.html";
-        // }, 3000);
     })
 
     nome.value = "",
@@ -136,6 +126,5 @@ document.getElementById("registrati").onclick = function(event) {
     passwordUtente.value = "",
     ripetiPassword.value = "",
 
-    event.preventDefault();
-    
+    event.preventDefault();  
 }

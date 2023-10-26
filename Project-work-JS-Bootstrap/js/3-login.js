@@ -19,7 +19,6 @@ if(sessionStorage.getItem("utenteRegistrato") === "true"){
     sessionStorage.removeItem("utenteRegistrato")
 }
 
-
 login.onclick = function(){
 
     fetch("http://localhost:9012/api/utenti")
@@ -42,9 +41,7 @@ login.onclick = function(){
             setTimeout(() => {
                 document.querySelector("#utenteNonTrovato").style.display = "none";
             }, 6000);
-        }
-
-        
+        }   
     })        
 
 }

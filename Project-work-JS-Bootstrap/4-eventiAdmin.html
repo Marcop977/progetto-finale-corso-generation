@@ -53,16 +53,12 @@
                       </li>
                         <li class="nav-item">
                             <a class="nav-link fs-5" aria-current="page" href="5-registrati.html" id="registrati" style="display: none;">Registrati</a>
-                            <!-- <a class="btn btn-warning" role="button" href="5-registrati.html" id="registrati" style="display: none;">Registrati</a> style="display: none;" -->
                         </li>
                         <li class="nav-item dropdown">
                         <div class="custom" style="display: none;" id="profiloLogout">
                             <a class="nav-link dropdown-toggle p-0 fs-4" href="#" id="dropdownLogout" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-circle fs-4"></i></a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLogout">
-                                <!-- <a id="logout" href="#">Logout</a> -->
-
-                                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contenitoreModale" id="logout">Logout</button> -->
                                 <a class="nav-link fs-5 pt-1" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#contenitoreModale3">
                                     <i class="bi bi-box-arrow-right me-2" style="margin-left: 20px"></i>Logout</a>
                             </div>
@@ -95,9 +91,6 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-warning w-100" id="login">Login</button>
-                            <!-- <input type="text" placeholder="E-mail" id="email">
-                            <input type="password" placeholder="Password" id="password">
-                            <button id="login">Login</button> -->
                         </div>
                         </li>
                     </ul>
@@ -106,163 +99,136 @@
         </div>
     </nav>
 </header>
-    <div class="container bg-light pb-5 pt-2 rounded-5 mb-5">
-
-
-        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Eliminazione evento</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  Sei sicuro di voler eliminare l'evento?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <button class="btn btn-warning" data-bs-target="#exampleModalToggle2" data-bs-dismiss="modal" id="cancella">Conferma</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Eliminazione evento</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Evento cancellato.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" onclick="location.reload()">Ok</button>
+    <main>
+      <div class="container bg-light pb-5 pt-2 rounded-5 mb-5">
+          <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Eliminazione evento</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Sei sicuro di voler eliminare l'evento?
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                      <button class="btn btn-warning" data-bs-target="#exampleModalToggle2" data-bs-dismiss="modal" id="cancella">Conferma</button>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Eliminazione evento</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      Evento cancellato.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" onclick="location.reload()">Ok</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                  
+          <div class="container" style="height: 60vh;" id="containerDaIngrandire">
+              <div class="container mt-5">
+                  <div class="d-flex justify-content-between mb-3">
+                      <div class="col-lg-6"><button type="button" class="btn btn-success scompare" id="modifica"><i class="bi bi-pencil"></i> Modifica</button></div>
+                      <button class="btn btn-danger scompare" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><i class="bi bi-trash3"></i> Elimina</button>
+                  </div>
+                  <div class="list-group">
+                      <ul class="list-group" id="grigliaEventi"></ul>
+                  </div>
+                  <div class="d-flex justify-content-center mt-5">
+                      <div id="paginationContainer"></div>
+                      <div id="paginaCorrente" style="display: none;"></div>
+                  </div>
+              </div>
+      
+              <div class="container" id="formModifica"></div>
           </div>
-          
-        
-        
-        <div class="container" style="height: 60vh;" id="containerDaIngrandire">
-            <div class="container mt-5">
-                <div class="d-flex justify-content-between mb-3">
-                    <div class="col-lg-6"><button type="button" class="btn btn-success scompare" id="modifica"><i class="bi bi-pencil"></i> Modifica</button></div>
-                    <button class="btn btn-danger scompare" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><i class="bi bi-trash3"></i> Elimina</button>
-                </div>
-                <div class="list-group">
-                    <ul class="list-group" id="grigliaEventi"></ul>
-                </div>
-                <div class="d-flex justify-content-center mt-5">
-                    <!-- <a href="2-admin.html">Torna alla sezione Aggiungi eventi</a> -->
-                    <div id="paginationContainer"></div>
-                    <div id="paginaCorrente" style="display: none;"></div>
-                </div>
-            </div>
-        
-            <div class="container" id="formModifica"></div>
+      </div>
+      <div class="container my-5 d-flex justify-content-between">
+        <a name="" id="" class="btn btn-primary scompare" href="1-homepage.html" role="button">Torna alla home</a>
+        <a name="" id="" class="btn btn-primary scompare" href="2-admin.html" role="button"><i class="bi bi-plus-lg"></i> Aggiungi eventi</a>
+      </div>
+      <div id="alertErrore" class="alert alert-warning fs-5" role="alert" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 3;">
+          <div class="row">
+            <div class="col-1 me-2"><i class="bi bi-exclamation-circle fs-3"></i></div>
+            <div class="col-10 p-0"><strong>L'evento ha una prenotazione e non può essere cancellato.</strong></div>
+          </div>
+      </div>
+      <div id="alertSelezionaEvento" class="alert alert-danger fs-4 px-5" role="alert" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 3;">
+        <strong>Seleziona un evento</strong>
         </div>
-        <!-- <div class="container">
-            <div class="d-flex justify-content-between">
-                <a name="" id="" class="btn btn-primary scompare" href="2-admin.html" role="button">Aggiungi eventi</a>
-                <a name="" id="" class="btn btn-primary scompare" href="1-homepage.html" role="button">Torna alla home</a>
-            </div>
-        </div> -->
-    </div>
-
-    <div class="container my-5 d-flex justify-content-between">
-      <a name="" id="" class="btn btn-primary scompare" href="1-homepage.html" role="button">Torna alla home</a>
-      <a name="" id="" class="btn btn-primary scompare" href="2-admin.html" role="button"><i class="bi bi-plus-lg"></i> Aggiungi eventi</a>
-    </div>
-
-    <div id="alertErrore" class="alert alert-warning fs-5" role="alert" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 3;">
-        <div class="row">
-          <div class="col-1 me-2"><i class="bi bi-exclamation-circle fs-3"></i></div>
-          <div class="col-10 p-0"><strong>L'evento ha una prenotazione e non può essere cancellato.</strong></div>
-        </div>
-    </div>
-
-    <div id="alertSelezionaEvento" class="alert alert-danger fs-4 px-5" role="alert" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 3;">
-      <strong>Seleziona un evento</strong>
-  </div>
-    
-
-    <!-- modale -->
-    <div class="modal" tabindex="-1" id="contenitoreModale">
+      
+      <!-- modale -->
+      <div class="modal" tabindex="-1" id="contenitoreModale">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="modal-title fs-5">Modifica evento</h1>
+                      <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                      <p>Sei sicuro di voler apportare le modifiche?</p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                      <button type="button" class="btn btn-warning" id="btnSalva">Conferma</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal" tabindex="-1" id="contenitoreModale2">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Modifica evento</h1>
+                    <h1 class="modal-title fs-5">Ripristino campi</h1>
                     <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Sei sicuro di voler apportare le modifiche?</p>
+                    <p>Sei sicuro di voler ripristinare tutti i campi?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-warning" id="btnSalva">Conferma</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="btnRipristina">Conferma</button>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="modal" tabindex="-1" id="contenitoreModale2">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h1 class="modal-title fs-5">Ripristino campi</h1>
-                  <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                  <p>Sei sicuro di voler ripristinare tutti i campi?</p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                  <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="btnRipristina">Conferma</button>
-              </div>
-          </div>
+        </div>
+      <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertInvio" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+          <strong>Evento modificato!</strong>
       </div>
-  </div>
-
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertInvio" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <strong>Evento modificato!</strong>
-    </div>
-
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertCancella" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <strong>Evento cancellato!</strong>
-    </div>
-
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="loginAdmin" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-      <strong>Login effettuato!</strong>
-    </div>
-
-
-
-    <div class="modal" tabindex="-1" id="contenitoreModale3">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h1 class="modal-title fs-5">Log out</h1>
-                  <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                  <p>Sei sicuro di voler effettuare il logout?</p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                  <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="logout">Conferma</button>
-              </div>
-          </div>
+      <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertCancella" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+          <strong>Evento cancellato!</strong>
       </div>
-  </div>
-
-
-
-
+      <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="loginAdmin" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+        <strong>Login effettuato!</strong>
+      </div>
+      <div class="modal" tabindex="-1" id="contenitoreModale3">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Log out</h1>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Sei sicuro di voler effettuare il logout?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="logout">Conferma</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
     <footer class="pt-3" style="background: rgb(39, 43, 48);">
         <!-- place footer here -->
         <div class="container-fluid ">
@@ -357,11 +323,6 @@
     
         <!-- Copyright -->
       </footer>
-      <!-- Footer -->
-
-    
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./js/4-eventiAdmin.js"></script>
 </body>

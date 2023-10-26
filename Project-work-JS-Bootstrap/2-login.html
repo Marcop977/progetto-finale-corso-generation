@@ -9,88 +9,61 @@
     <title>Odyssey - Log in</title>
 </head>
 <body>
-
-
-    <!-- <div class="d-flex align-items-center" style="height: 100vh;">
-        <div class="container p-5 bg-black bg-opacity-25">
-            <h3 id="loginEffettuato"></h3>
-            <div class="mb-3 w-50">
-              <label for="" class="form-label">Email</label>
-              <input type="text"
-                class="form-control" name="" id="email" aria-describedby="helpId" placeholder="">
-            </div>
-            <div class="mb-3 w-50">
-              <label for="" class="form-label">Password</label>
-              <input type="text"
-                class="form-control" name="" id="password" aria-describedby="helpId" placeholder="">
-            </div>
-            <button type="button" class="btn btn-primary" id="login">Login</button>
-        </div>
-    </div> -->
-
-
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="row border rounded-5 p-3 bg-white shadow" style="width: 930px;">
-            <div class="col-md-6">
-                <div class="row align-items-center">
-                    <div class="mb-4">
-                        <h2>Ben ritornato</h2>
-                        <p>Siamo felici che sei ritornato</p>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Indirizzo email" id="email">
-                    </div>
-                    <div class="mb-1">
-                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" id="password">
-                        <i class="bi bi-eye-slash position-absolute top-60 end-50 translate-middle-y me-4" id="occhioNascosto" style="padding-bottom: 2.5rem;"></i>
-                    </div>
-                    <div class="mb-5 d-flex justify-content-between">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="form-check">
-                            <label for="form-check" class="form-check-label text-secondary">
-                                <small>Ricordami</small>
-                            </label>
+    <main>
+        <div class="container d-flex justify-content-center align-items-center min-vh-100">
+            <div class="row border rounded-5 p-3 bg-white shadow" style="width: 930px;">
+                <div class="col-md-6">
+                    <div class="row align-items-center">
+                        <div class="mb-4">
+                            <h2>Ben ritornato</h2>
+                            <p>Siamo felici che sei ritornato</p>
                         </div>
-                        <div>
-                            <small><a href="#">
-                            Password dimenticata?
-                            </a></small>
+                        <div class="mb-3">
+                            <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Indirizzo email" id="email">
                         </div>
+                        <div class="mb-1">
+                            <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" id="password">
+                            <i class="bi bi-eye-slash position-absolute top-60 end-50 translate-middle-y me-4" id="occhioNascosto" style="padding-bottom: 2.5rem;"></i>
+                        </div>
+                        <div class="mb-5 d-flex justify-content-between">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="form-check">
+                                <label for="form-check" class="form-check-label text-secondary">
+                                    <small>Ricordami</small>
+                                </label>
+                            </div>
+                            <div>
+                                <small><a href="#">
+                                Password dimenticata?
+                                </a></small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-warning btn-lg w-100 fs-6" id="login">Login</button>
+                        </div>
+                        <div class="row">
+                            <small>Non hai un account? <a href="#">Registrati</a></small>
+                        </div>
+                        <div class="mb-3" style="margin-top: 9rem"><a href="1-homepage.html">Torna alla home</a></div>
                     </div>
-                    <div class="mb-3">
-                        <button type="button" class="btn btn-warning btn-lg w-100 fs-6" id="login">Login</button>
-                    </div>
-                    <div class="row">
-                        <small>Non hai un account? <a href="#">Registrati</a></small>
-                    </div>
-                    <div class="mb-3" style="margin-top: 9rem"><a href="1-homepage.html">Torna alla home</a></div>
+                </div>
+                <div class="col-md-6">
+                    <img src="./img/pexels-kris-lucas-3385662.jpg" alt="" class="img-fluid h-100 rounded-5">
                 </div>
             </div>
-            <div class="col-md-6">
-                <img src="./img/pexels-kris-lucas-3385662.jpg" alt="" class="img-fluid h-100 rounded-5">
+        </div>
+        
+        <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="registrazioneAvvenuta" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+            <strong>Registrazione avvenuta! Effettua il login per continuare</strong>
+        </div>
+        
+        <div class="alert alert-warning fs-5 w-25 text-center" role="aler" id="utenteNonTrovato" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+            <div class="row">
+                <div class="col-1 ms-1"><i class="bi bi-exclamation-circle fs-2"></i></div>
+                <div class="col-10 p-0"><strong>Email e/o password errate. Se hai smarrito la password, <a href="#">clicca qui</a> per recuperarla.</strong></div>
             </div>
         </div>
-    </div>
-    
-
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="registrazioneAvvenuta" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <strong>Registrazione avvenuta! Effettua il login per continuare</strong>
-    </div>
-
-
-    <div class="alert alert-warning fs-5 w-25 text-center" role="aler" id="utenteNonTrovato" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <div class="row">
-            <div class="col-1 ms-1"><i class="bi bi-exclamation-circle fs-2"></i></div>
-            <div class="col-10 p-0"><strong>Email e/o password errate. Se hai smarrito la password, <a href="#">clicca qui</a> per recuperarla.</strong></div>
-        </div>
-    </div>
-
-    
-
-
-
-
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./js/2-login.js"></script>
 </body>

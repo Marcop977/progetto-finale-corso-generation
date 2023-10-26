@@ -1,7 +1,6 @@
 const passwordUtente = document.getElementById("password");
 const ripetiPassword = document.getElementById("ripetiPassword");
 
-
 document.querySelector("#occhioNascosto").addEventListener("click", mostraNascondi);
 document.querySelector("#occhioNascosto2").addEventListener("click", mostraNascondi);
 
@@ -16,7 +15,6 @@ function mostraNascondi(){
         ripetiPassword.setAttribute("type", type);
     }
 }
-
 
 document.getElementById("registrati").onclick = function(event) {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
@@ -97,8 +95,7 @@ document.getElementById("registrati").onclick = function(event) {
     }else{
         ripetiPasswordFeedback.style.display = 'none';
     }
-  
-    
+
     const utente = {
         nome: nome.value,
         cognome: cognome.value,
@@ -118,17 +115,9 @@ document.getElementById("registrati").onclick = function(event) {
         },
         body: JSON.stringify(utente)
     })
-    .then(data => {
-        
-        return data.json()})
-    .then(res =>{
-        
+    .then(data => {return data.json()})
+    .then(res =>{      
         location.href = "3-login.html";
-
-
-        // setTimeout(() => { 
-        //     window.location.href = "1-homepage.html";
-        // }, 3000);
     })
 
     nome.value = "",
@@ -138,6 +127,5 @@ document.getElementById("registrati").onclick = function(event) {
     passwordUtente.value = "",
     ripetiPassword.value = "",
 
-    event.preventDefault();
-    
+    event.preventDefault();  
 }

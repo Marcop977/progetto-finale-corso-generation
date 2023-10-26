@@ -22,22 +22,6 @@
     </script>
 </head>
 <body>
-            <!-- <label for="input-file">Carica immagine</label> --> <!-- il tasto effettivo è questo, quindi cambiare il css di questo tasto -->
-        <!-- <input type="file" id="input-file" accept="image/png, image/jpeg, image/jpg" style="display: none;"> -->
-    
-    <!-- <form action="">
-        <input type="text" id="descrizione" placeholder="descrizione">
-        <input type="text" id="caratteristiche" placeholder="caratteristiche">
-        <input type="date" id="dataEvento">
-        <label for="attivo">disponibile:</label>
-        <input type="checkbox" id="attivo" name="attivo" value="true">
-        <input type="text" id="luogoEvento" placeholder="luogo evento">
-        <input type="text" id="tipologia" placeholder="tipologia evento">     
-        <input type="text" id="locandina" placeholder="inserisci immagine">
-
-        <button id="btnRegistra">Registra evento</button>
-    </form> -->
-
     <header>
         <nav class="navbar navbar-light navbar-expand-lg scroll-nav">
             <div class="container">
@@ -112,9 +96,6 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-warning w-100" id="login">Login</button>
-                                <!-- <input type="text" placeholder="E-mail" id="email">
-                                <input type="password" placeholder="Password" id="password">
-                                <button id="login">Login</button> -->
                             </div>
                             </li>
                         </ul>
@@ -203,67 +184,45 @@
                             <button type="button" class="btn btn-success scompare" id="btnRegistra"><i class="bi bi-check2"></i> Registra evento</button>
                         </div>
                     </form>
-                    <!-- <div class="container">
-                        <div class="my-5 d-flex justify-content-between">
-                            <a name="" id="" class="btn btn-primary scompare" href="1-homepage.html" role="button">Torna alla home</a>
-                            <a name="" id="" class="btn btn-primary scompare" href="4-eventiAdmin.html" role="button">Modifica/Cancella eventi</a>
-                        </div>
-                    </div> -->
                 </div>
             </div>
+        </div>
+
+        <div class="container my-5 d-flex justify-content-between">
+            <a name="" id="" class="btn btn-primary scompare" href="1-homepage.html" role="button">Torna alla home</a>
+            <a name="" id="" class="btn btn-primary scompare" href="4-eventiAdmin.html" role="button">Modifica/Cancella eventi</a>
+        </div>
+
+        <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertInvio" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+            <strong>Evento aggiunto!</strong>
+        </div>
+
+        <div class="modal" tabindex="-1" id="contenitoreModale">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Log out</h1>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Sei sicuro di voler effettuare il logout?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="logout">Conferma</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="loginAvvenuto" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+            <strong>Login effettuato!</strong>
+        </div>
+    
+        <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="loginAdmin" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+            <strong>Login effettuato!</strong>
         </div>
     </main>
-    
-
-
-    <div class="container my-5 d-flex justify-content-between">
-        <a name="" id="" class="btn btn-primary scompare" href="1-homepage.html" role="button">Torna alla home</a>
-        <a name="" id="" class="btn btn-primary scompare" href="4-eventiAdmin.html" role="button">Modifica/Cancella eventi</a>
-    </div>
-
-
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertInvio" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <strong>Evento aggiunto!</strong>
-    </div>
-    <!-- <div id="liveAlert">
-    </div> -->
-    
-
-
-    <div class="modal" tabindex="-1" id="contenitoreModale">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Log out</h1>
-                    <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Sei sicuro di voler effettuare il logout?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="logout">Conferma</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="loginAvvenuto" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <strong>Login effettuato!</strong>
-    </div>
-
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="loginAdmin" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <strong>Login effettuato!</strong>
-    </div>
-
-
-
-
     <footer class="pt-3" style="background: rgb(39, 43, 48);">
         <!-- place footer here -->
         <div class="container-fluid ">
@@ -357,11 +316,7 @@
         </div>
     
         <!-- Copyright -->
-      </footer>
-      <!-- Footer -->
-
-
-    
+      </footer> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./js/2-admin.js"></script>
 </body>

@@ -14,7 +14,6 @@ const posizioneEvento = document.querySelector("#posizioneEvento");
 
 posizioneEvento.textContent = evento.luogoEvento;
 
-
 const occhioPassword = document.querySelector("#occhioPassword");
 const passwordCampo = document.querySelector("#password");
 
@@ -33,7 +32,6 @@ if(sessionStorage.getItem("user") == null){
 
     btnLogin.addEventListener("click", function(){
         
-
         fetch("http://localhost:9012/api/utenti")
         .then(data =>{return data.json()})
         .then(res =>{
@@ -56,12 +54,10 @@ if(sessionStorage.getItem("user") == null){
                 }, 6000);
             }
         })
-
     })
 }else{
     mostraNascondi()          
 }
-
 
 function mostraNascondi(){
     const utenteEsistente = JSON.parse(sessionStorage.getItem("user"));
@@ -109,28 +105,6 @@ function mostraNascondi(){
         }, 6000);            
     } 
 }
-// containerEvento.innerHTML = evento.dataEvento;
-// locandinaCont.setAttribute("src", evento.locandina);
-
-
-// containerEvento.innerHTML = `
-//     <div class="row" id="colSingoloEvento">
-//         <div class="col-lg-6">
-//             <img class="w-100" src="./img/immagini-evento/${evento.locandinaEventoSingolo}.jpg" alt="">
-//         </div>
-//         <div class="col-lg-6 bg-secondary text-center">
-//             <h4 class="fs-2">Titolo: ${evento.titolo}</h4>
-//             <p>Data evento: ${evento.dataEvento}</p>
-//             <p>Posti disponibili: ${evento.postiDisponibili}</p>
-//             <p>Categoria evento: ${evento.tipologia}</p>
-//             <p>Luogo evento: ${evento.luogoEvento}</p>
-//             <p>Descrizione evento:</p>
-//             <p>${evento.descrizioneLunga}</p>
-//             <button type="button" class="btn btn-primary w-100" style="display: none;" id="prenota">Prenota evento</button>
-//         </div>
-//     </div>
-// `;
-
 
 containerEvento.innerHTML = `
     <h2 class="fs-2 pb-3">${evento.titolo}</h2>
@@ -141,13 +115,6 @@ containerEvento.innerHTML = `
     <p class="fs-5"><strong>Descrizione evento:</strong></p>
     <p class="fs-5 px-5">${evento.descrizioneLunga}</p>
 `;
-
-// document.querySelector("#postiPrenotazione").addEventListener("input", function() {
-//     if (this.value > 99) {
-//         this.value = 99;
-//     }
-// });
-
 
 // ---------- mappa
 const map = L.map("map").setView([40.8522, 14.2681], 9);
@@ -184,11 +151,7 @@ if(evento.prenotazioneObbligatoria === true){
     conferma.onclick = function(){
         if(sessionStorage.getItem("user") == null){
             document.querySelector("#contenitoreModale2").style.display = "block";
-            
-
-        }else{
-        
-            
+        }else{   
             const nomePrenotazione = document.querySelector("#nomePrenotazione");
             const posti = document.querySelector("#postiPrenotazione");
             const email = document.querySelector("#emailPrenotazione");
@@ -255,8 +218,7 @@ if(evento.prenotazioneObbligatoria === true){
                 descrizioneLunga: evento.descrizioneLunga,
                 locandinaEventoSingolo: evento.locandinaEventoSingolo,
                 titolo: evento.titolo
-            }
-            
+            } 
 
             fetch("http://localhost:9012/api/prenotazioniDTO", {
                 method: "POST",

@@ -36,13 +36,7 @@ if(sessionStorage.getItem("adminEsistente") === "true"){
     }, 3000);
 }
 
-
 function html(eventiDaMostrare, indiceInizio, indiceFine){
-    // const indiceInizio = (paginaCorrente - 1) * eventiPerPagina;
-    // const indiceFine = indiceInizio + eventiPerPagina;
-    // const eventiDaMostrare = res.slice(indiceInizio, indiceFine);        
-    
-
     grigliaEventi.innerHTML = "";
 
     eventiDaMostrare.forEach((evento, i) => {
@@ -89,7 +83,7 @@ function aggiornaPaginazione(res) {
             paginaCorrente = i;
             aggiornaVisualizzazioneEventi(res);
             aggiornaIndicatorePaginaCorrente();
-            sessionStorage.setItem("paginaCorrente", JSON.stringify(paginaCorrente)); // Salva la pagina corrente in sessionStorage
+            sessionStorage.setItem("paginaCorrente", JSON.stringify(paginaCorrente)); // salva la pagina corrente in sessionStorage
         });
         contenitorePaginazione.appendChild(pulsantePagina);
     }
@@ -108,7 +102,6 @@ function aggiornaVisualizzazioneEventi(res) {
             const valoreRadio = this.value;
             let eventoSelezionato = res[valoreRadio];
             sessionStorage.setItem("eventoSelezionato", JSON.stringify(eventoSelezionato));
-            // sessionStorage.setItem("idEvento", JSON.stringify(eventoSelezionato.id_evento));
         });
     });
 }
@@ -117,19 +110,12 @@ function aggiornaIndicatorePaginaCorrente() {
     elementoPaginaCorrente.textContent = paginaCorrente;
 }
 
-
 window.onload = function(){
 
     sessionStorage.removeItem("eventoSelezionato");
 }
 
-
-
 modifica.onclick = function(){
-    // window.scrollTo({ //non va oltre 100
-    //     top: 100,
-    //     behavior: 'smooth'
-    // });
     let eventoSelezionatoSession = JSON.parse(sessionStorage.getItem("eventoSelezionato"));
     
     if(eventoSelezionatoSession){
@@ -257,13 +243,11 @@ modifica.onclick = function(){
     }
 }
 
-document.querySelector("#btnSalva").addEventListener("click", function(){        
-      
+document.querySelector("#btnSalva").addEventListener("click", function(){    
     let containerModale = document.querySelector("#contenitoreModale");
     let modale = bootstrap.Modal.getInstance(containerModale);
     document.querySelector("#containerDaIngrandire").setAttribute("style", "height: 70vh;");
     
-
     const idEvento = document.querySelector("#idEvento");
     const titolo = document.querySelector("#titoloEvento");
     const luogoEvento = document.querySelector("#luogoEvento");
@@ -275,8 +259,6 @@ document.querySelector("#btnSalva").addEventListener("click", function(){
     const immagineEvento = document.querySelector("#immagineEventoSingolo");
     const descrizioneBreve = document.querySelector("#descrizioneBreve");
     const descrizioneLunga = document.querySelector("#descrizioneVal");
-
-    // let conferma = window.confirm("Sei sicuro di voler modificare l'evento?");
 
     const eventoModificato = {
         "id_evento": idEvento.value,
@@ -300,11 +282,8 @@ document.querySelector("#btnSalva").addEventListener("click", function(){
         body: JSON.stringify(eventoModificato)
     })
     .then(data =>{
-        // location.reload();
         modale.hide();
-
         prendiAvviso();
-
         return data.json();
     }) 
 })
@@ -316,15 +295,10 @@ function prendiAvviso(){
     fetch("http://localhost:9012/api/eventi")
     .then(data =>{return data.json()})
     .then(res =>{
-        // const indiceInizio = (paginaCorrente - 1) * eventiPerPagina;
-        // const indiceFine = indiceInizio + eventiPerPagina;
-        // const eventiDaMostrare = res.slice(indiceInizio, indiceFine);
-        // html(eventiDaMostrare, indiceInizio, indiceFine);
         sessionStorage.removeItem("eventoSelezionato");
         aggiornaPaginazione(res);
         aggiornaVisualizzazioneEventi(res);
         aggiornaIndicatorePaginaCorrente();
-
 
         document.querySelector("#contenitoreModifica").style.display = "none";
         document.querySelector(".scroll-nav").scrollIntoView();
@@ -342,7 +316,6 @@ cancella.addEventListener('click', function() {
     let modale = bootstrap.Modal.getInstance(containerModale);
     let containerModale2 = document.querySelector("#exampleModalToggle2");
     let modale2 = bootstrap.Modal.getInstance(containerModale2);            
-    
     
     if(eventoSelezionatoSession){
         fetch("http://localhost:9012/api/prenotazioni")
@@ -368,11 +341,8 @@ cancella.addEventListener('click', function() {
                 fetch("http://localhost:9012/api/eventi/" + eventoSelezionatoSession.id_evento, {
                     method: "DELETE"
                 })
-                // .then(data =>{location.reload()})
-                .then(data =>{
-                    
+                .then(data =>{                    
                     modale.hide();
-                    // modale2.show();
                     prendiAvvisoDelete();
                     
                 })
@@ -391,7 +361,6 @@ cancella.addEventListener('click', function() {
 
 
 function prendiAvvisoDelete(){
-
     const alertCancella = document.querySelector("#alertCancella");
     alertCancella.style.display = "block"
     fetch("http://localhost:9012/api/eventi")
@@ -401,7 +370,6 @@ function prendiAvvisoDelete(){
         aggiornaPaginazione(res);
         aggiornaVisualizzazioneEventi(res);
         aggiornaIndicatorePaginaCorrente();
-
     })
     setTimeout(function() {
         alertCancella.style.display = "none";

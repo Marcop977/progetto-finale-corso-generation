@@ -21,14 +21,11 @@
     rel="stylesheet"
     href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"
     />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <link rel="stylesheet" href="./css/1-homepage.css">
     <title>Odyssey - Homepage </title>
 </head>
 <body>
-
     <header>
         <nav class="navbar navbar-light navbar-expand-lg scroll-nav">
             <div class="container">
@@ -48,7 +45,6 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end align-items-center flex-grow-1 pe-3 gap-3">
                             <li class="nav-item" id="pannello">
-                            <!-- <button type="button" class="btn btn-primary">Get Started</button> -->
                             <a class="nav-link fs-5" aria-current="page" href="#" id="btnPannello" style="display: none; color: #e6a148">
                                 <i class="fa-solid fa-helmet-safety me-2"></i>
                                 Pannello di lavoro</a>
@@ -61,16 +57,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link fs-5" aria-current="page" href="1-registrati.html" id="registrati" style="display: none;">Registrati</a>
-                                <!-- <a class="btn btn-warning" role="button" href="5-registrati.html" id="registrati" style="display: none;">Registrati</a> style="display: none;" -->
                             </li>
                             <li class="nav-item dropdown">
                             <div class="custom" style="display: none;" id="profiloLogout">
                                 <a class="nav-link dropdown-toggle p-0 fs-4" href="#" id="dropdownLogout" data-bs-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-circle fs-4"></i></a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLogout">
-                                    <!-- <a id="logout" href="#">Logout</a> -->
-
-                                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contenitoreModale" id="logout">Logout</button> -->
                                     <a class="nav-link fs-5 pt-1" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#contenitoreModale">
                                         <i class="bi bi-box-arrow-right me-2" style="margin-left: 20px"></i>Logout</a>
                                 </div>
@@ -104,9 +96,6 @@
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-warning w-100" id="login">Login</button>
-                                <!-- <input type="text" placeholder="E-mail" id="email">
-                                <input type="password" placeholder="Password" id="password">
-                                <button id="login">Login</button> -->
                             </div>
                             </li>
                         </ul>
@@ -115,7 +104,6 @@
             </div>
         </nav>
     </header>
-    
     <main>
          <!-- swiper -->
          <div class="swiper swiper-container">
@@ -155,10 +143,6 @@
             <div class="swiper-button-prev ms-4 pagination-prev" style="display: none;"></div>
             <div class="swiper-button-next me-4 pagination-next" style="display: none;"></div>
         </div>
-
-
-
-
 
         <!-- ricerca -->
         <div class="container-fluid rounded-3 px-4 sovrapposizione w-75 py-3" style="box-shadow: 0px 10px 5px 0px rgba(221, 221, 221, 0.651); background-color: #f5f5f5;">
@@ -206,8 +190,6 @@
             </div>
         </div>
         
-
-
         <div class="container-fluid">
             <!-- griglia eventi -->
             <div class="container mt-5 pt-5" id="titoloLista">
@@ -235,8 +217,6 @@
                 <div class="row" id="nonDisponibili"></div>
             </div>
         </div>
-
-
 
         <div class="container-fluid parallax-container overlay2" style="height: 60vh; background-image: url(./img/Eventi-aziendali-guida-alle-tipologie-e-a-come-organizzarli-post-Coronavirus.jpg);">
             <div class="position-absolute top-50 start-50 translate-middle text-center w-75 text-white d-flex flex-wrap justify-content-center text-light">
@@ -272,7 +252,6 @@
             </div>
         </div>
 
-
         <div class="container-fluid d-flex justify-content-center align-items-center p-5">
             <h1 class="text-secondary"><i class="bi bi-globe-americas"></i> Ecco a te la mappa degli eventi!</h1>
         </div>
@@ -301,49 +280,40 @@
                 </div>
             </div>
         </div>
-    </main>
-    
-
-
-    <div class="modal" tabindex="-1" id="contenitoreModale">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Log out</h1>
-                    <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Sei sicuro di volere effettuare il logout?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="logout">Conferma</button>
+        
+        <div class="modal" tabindex="-1" id="contenitoreModale">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Log out</h1>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Sei sicuro di volere effettuare il logout?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="logout">Conferma</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertLogout" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <strong>Logout effettuato</strong>
-    </div>
-
-    <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertLogin" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <strong>Login effettuato</strong>
-    </div>
-
-
-    <div class="alert alert-warning fs-5 w-25 text-center" role="aler" id="utenteNonTrovato" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
-        <div class="row">
-            <div class="col-1 ms-1"><i class="bi bi-exclamation-circle fs-2"></i></div>
-            <div class="col-10 p-0"><strong>Email e/o password errate. Se hai smarrito la password, <a href="#">clicca qui</a> per recuperarla.</strong></div>
+    
+        <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertLogout" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+            <strong>Logout effettuato</strong>
         </div>
-    </div>
-
-
-
-
-
+    
+        <div class="alert alert-success fs-5 w-25 text-center" role="alert" id="alertLogin" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+            <strong>Login effettuato</strong>
+        </div>
+    
+        <div class="alert alert-warning fs-5 w-25 text-center" role="aler" id="utenteNonTrovato" style="position: fixed; z-index: 3; bottom: 10px; right: 10px; display: none;">
+            <div class="row">
+                <div class="col-1 ms-1"><i class="bi bi-exclamation-circle fs-2"></i></div>
+                <div class="col-10 p-0"><strong>Email e/o password errate. Se hai smarrito la password, <a href="#">clicca qui</a> per recuperarla.</strong></div>
+            </div>
+        </div>
+    </main>
     <!-- <footer>
         <div class="container-fluid text-light" style="background: rgb(90, 103, 117);">
             <div class="container pt-5">
@@ -391,8 +361,6 @@
             </div>
         </div>
     </footer> -->
-
-
     <footer class="pt-3" style="background: rgb(39, 43, 48);">
         <!-- place footer here -->
         <div class="container-fluid ">

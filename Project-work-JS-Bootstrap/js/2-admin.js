@@ -14,7 +14,6 @@ const navLogout = document.querySelector("#profiloLogout");
 const btnLogout = document.querySelector("#logout");
 const feedbackCampi = document.querySelector("#feedbackCampi");
 
-
 if(sessionStorage.getItem("adminEsistente") === "true"){
     document.querySelector("#loginAdmin").style.display = "block";
     sessionStorage.removeItem("adminEsistente");
@@ -42,14 +41,6 @@ btnScompare.forEach(button => {
     });
 });
 
-//se voglio far apparire l'alert quando l'admin si logga
-// if(sessionStorage.getItem("adminEsistente") === "true"){
-//     document.querySelector("#loginAvvenuto").style.display = "block"
-//     setTimeout(() => {
-//         document.querySelector("#loginAvvenuto").style.display = "none"
-//     }, 3000);            
-// }
-
 
 btnRegistra.onclick = function(event){
     let errore = false;  //se dopo i controlli la variabile rimane false, allora avviene la registrazione
@@ -74,7 +65,6 @@ btnRegistra.onclick = function(event){
     } else {
         descrizioneBreve.classList.remove("errore");
     }
-
 
     if(descrizioneCampo.value === ""){
         descrizioneCampo.classList.add("errore");
@@ -118,7 +108,6 @@ btnRegistra.onclick = function(event){
         immagineCampo.classList.remove("errore");
     }
 
-
     const campi = document.querySelectorAll('input[type="text"], input[type="number"], input[type="date"], select, textarea');
   
     campi.forEach(campo =>{
@@ -153,13 +142,7 @@ btnRegistra.onclick = function(event){
             prendiAvviso()
             return data.json()
             
-        }) 
-        // .then(() =>{
-        //     localStorage.setItem('richiestaCompletata', 'true');
-
-        // })       
-
-        
+        })        
     }else{
         event.preventDefault();
         feedbackCampi.style.display = "block";
@@ -182,6 +165,4 @@ function prendiAvviso(){
     luogoEventoCampo.value = "";
     tipologiaCampo.value = "";
     immagineCampo.value = "";
-}
-
-        
+}        
